@@ -1,5 +1,5 @@
 <fable>
-  <config font-family="Poppins" />
+  <config font-family="Share Tech Mono" />
 
   <!-- Propriedades que serão resetadas -->
   <property name="pontuacao" default="0" />
