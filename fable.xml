@@ -18,7 +18,7 @@
     <agent
       id="titulo-inicio"
       x="center"
-      y="50"
+      y="0"
       text="🔄 Teste da Função reset()"
       color="#2e7d32"
       font-size="28"
@@ -27,7 +27,7 @@
     <agent
       id="subtitulo"
       x="center"
-      y="170"
+      y="90"
       text="Navegue, modifique valores e teste o reset completo!"
       color="#424242"
       font-size="16"
@@ -37,7 +37,7 @@
     <agent
       id="status-inicial"
       x="center"
-      y="250"
+      y="165"
       text="📊 Estado Inicial - Tudo em valores padrão"
       color="#1976d2"
       font-size="18"
