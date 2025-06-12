@@ -1,10 +1,585 @@
 <fable>
-  <config font-family="Schoolbell" />
+  <config font-family="Poppins" />
 
+  <!-- Propriedades que serão resetadas -->
   <property name="pontuacao" default="0" />
-  <property name="visitante" default="Aventureiro" />
+  <property name="nivel" default="1" />
+  <property name="vidas" default="3" />
+  <property name="inventario" default="[]" />
+  <property name="fase_atual" default="tutorial" />
+  <property name="tempo_jogado" default="0" />
+  <property name="achievements" default="[]" />
+  <property name="gold" default="100" />
+  <property name="experiencia" default="0" />
+  <property name="ultima_acao" default="Jogo iniciado" />
 
-  <start />
-  <middle />
-  <ending />
+  <!-- === PÁGINA INICIAL === -->
+  <page id="inicio" bg_color="#e8f5e8">
+    <agent
+      id="titulo-inicio"
+      x="center"
+      y="50"
+      text="🔄 Teste da Função reset()"
+      color="#2e7d32"
+      font-size="28"
+    />
+
+    <agent
+      id="subtitulo"
+      x="center"
+      y="100"
+      text="Navegue, modifique valores e teste o reset completo!"
+      color="#424242"
+      font-size="16"
+    />
+
+    <!-- Status Inicial -->
+    <agent
+      id="status-inicial"
+      x="center"
+      y="150"
+      text="📊 Estado Inicial - Tudo em valores padrão"
+      color="#1976d2"
+      font-size="18"
+    />
+
+    <agent
+      id="display-inicial"
+      x="center"
+      y="190"
+      text="Pontos: $pontuacao | Nível: $nivel | Vidas: $vidas | Gold: $gold"
+      color="#2e7d32"
+      font-size="14"
+    />
+
+    <agent
+      id="display-inicial2"
+      x="center"
+      y="220"
+      text="Fase: $fase_atual | XP: $experiencia | Tempo: $tempo_jogado min"
+      color="#2e7d32"
+      font-size="14"
+    />
+
+    <!-- Navegação -->
+    <agent
+      id="ir-jogo"
+      x="200"
+      y="300"
+      text="🎮 Iniciar Jogo"
+      bg_color="#4caf50"
+      color="white"
+      width="140"
+      height="50"
+      animation="hover-grow click-bounce"
+      on_click="goToPage('jogo')"
+    />
+
+    <agent
+      id="ir-loja"
+      x="400"
+      y="300"
+      text="🛒 Ir para Loja"
+      bg_color="#ff9800"
+      color="white"
+      width="140"
+      height="50"
+      animation="hover-grow click-bounce"
+      on_click="goToPage('loja')"
+    />
+
+    <agent
+      id="ir-stats"
+      x="600"
+      y="300"
+      text="📈 Estatísticas"
+      bg_color="#2196f3"
+      color="white"
+      width="140"
+      height="50"
+      animation="hover-grow click-bounce"
+      on_click="goToPage('estatisticas')"
+    />
+
+    <!-- Botão de Reset Principal -->
+    <agent
+      id="reset-completo"
+      x="center"
+      y="400"
+      text="🔄 RESET COMPLETO"
+      bg_color="#f44336"
+      color="white"
+      width="200"
+      height="60"
+      animation="hover-grow click-bounce"
+      font-size="18"
+      on_click="set(ultima_acao, 'Reset executado!'); reset()"
+    />
+
+    <agent
+      id="info-reset"
+      x="center"
+      y="480"
+      text="💡 O reset() volta para a primeira página E reseta todas as propriedades"
+      color="#666666"
+      font-size="12"
+    />
+  </page>
+
+  <!-- === PÁGINA DO JOGO === -->
+  <page id="jogo" bg_color="#fff3e0">
+    <agent
+      id="titulo-jogo"
+      x="center"
+      y="30"
+      text="🎮 Área do Jogo"
+      color="#e65100"
+      font-size="24"
+    />
+
+    <agent
+      id="status-jogo"
+      x="center"
+      y="80"
+      text="Modifique os valores e teste o reset!"
+      color="#424242"
+      font-size="14"
+    />
+
+    <!-- Status Atual -->
+    <agent
+      id="display-jogo"
+      x="center"
+      y="120"
+      text="Pontos: $pontuacao | Nível: $nivel | Vidas: $vidas | XP: $experiencia"
+      color="#2e7d32"
+      font-size="16"
+    />
+
+    <agent
+      id="display-fase"
+      x="center"
+      y="150"
+      text="Fase: $fase_atual | Última ação: $ultima_acao"
+      color="#2e7d32"
+      font-size="14"
+    />
+
+    <!-- Ações do Jogo -->
+    <agent
+      id="ganhar-pontos"
+      x="100"
+      y="220"
+      text="Ganhar 100 Pontos"
+      bg_color="#4caf50"
+      color="white"
+      width="140"
+      height="40"
+      animation="hover-grow click-bounce"
+      on_click="set(pontuacao, $pontuacao + 100); 
+                     set(experiencia, $experiencia + 25);
+                     set(ultima_acao, 'Ganhou 100 pontos!');"
+    />
+
+    <agent
+      id="subir-nivel"
+      x="260"
+      y="220"
+      text="Subir de Nível"
+      bg_color="#9c27b0"
+      color="white"
+      width="120"
+      height="40"
+      animation="hover-grow click-bounce"
+      on_click="set(nivel, $nivel + 1); 
+                     set(experiencia, $experiencia + 100);
+                     set(ultima_acao, 'Subiu para nível $nivel!');"
+    />
+
+    <agent
+      id="perder-vida"
+      x="400"
+      y="220"
+      text="Perder Vida"
+      bg_color="#f44336"
+      color="white"
+      width="100"
+      height="40"
+      animation="hover-grow click-bounce"
+      on_click="set(vidas, $vidas - 1); 
+                     set(ultima_acao, 'Perdeu 1 vida!');"
+    />
+
+    <agent
+      id="mudar-fase"
+      x="520"
+      y="220"
+      text="Próxima Fase"
+      bg_color="#3f51b5"
+      color="white"
+      width="120"
+      height="40"
+      animation="hover-grow click-bounce"
+      on_click="set(fase_atual, 'fase-' + $nivel); 
+                     set(tempo_jogado, $tempo_jogado + 5);
+                     set(ultima_acao, 'Avançou para: $fase_atual');"
+    />
+
+    <!-- Navegação -->
+    <agent
+      id="voltar-inicio"
+      x="150"
+      y="320"
+      text="🏠 Voltar ao Início"
+      bg_color="#607d8b"
+      color="white"
+      width="140"
+      height="40"
+      animation="hover-grow"
+      on_click="goToPage('inicio')"
+    />
+
+    <agent
+      id="ir-loja-jogo"
+      x="320"
+      y="320"
+      text="🛒 Ir para Loja"
+      bg_color="#ff9800"
+      color="white"
+      width="120"
+      height="40"
+      animation="hover-grow"
+      on_click="goToPage('loja')"
+    />
+
+    <agent
+      id="reset-do-jogo"
+      x="470"
+      y="320"
+      text="🔄 RESET"
+      bg_color="#f44336"
+      color="white"
+      width="100"
+      height="40"
+      animation="hover-grow click-bounce"
+      on_click="set(ultima_acao, 'Reset do jogo!'); reset()"
+    />
+  </page>
+
+  <!-- === PÁGINA DA LOJA === -->
+  <page id="loja" bg_color="#f3e5f5">
+    <agent
+      id="titulo-loja"
+      x="center"
+      y="30"
+      text="🛒 Loja do Jogo"
+      color="#7b1fa2"
+      font-size="24"
+    />
+
+    <!-- Status da Loja -->
+    <agent
+      id="display-loja"
+      x="center"
+      y="80"
+      text="💰 Gold: $gold | Inventário: $inventario"
+      color="#2e7d32"
+      font-size="16"
+    />
+
+    <agent
+      id="status-loja"
+      x="center"
+      y="110"
+      text="Última ação: $ultima_acao"
+      color="#666666"
+      font-size="14"
+    />
+
+    <!-- Itens da Loja -->
+    <agent
+      id="comprar-espada"
+      x="150"
+      y="180"
+      text="⚔️ Comprar Espada\n(50 gold)"
+      bg_color="#4caf50"
+      color="white"
+      width="120"
+      height="60"
+      animation="hover-grow click-bounce"
+      on_click="set(gold, $gold - 50); 
+                     set(inventario, [...$inventario, 'espada']);
+                     set(ultima_acao, 'Comprou espada!');"
+    />
+
+    <agent
+      id="comprar-pocao"
+      x="300"
+      y="180"
+      text="🧪 Comprar Poção\n(30 gold)"
+      bg_color="#2196f3"
+      color="white"
+      width="120"
+      height="60"
+      animation="hover-grow click-bounce"
+      on_click="set(gold, $gold - 30); 
+                     set(inventario, [...$inventario, 'poção']);
+                     set(ultima_acao, 'Comprou poção!');"
+    />
+
+    <agent
+      id="comprar-escudo"
+      x="450"
+      y="180"
+      text="🛡️ Comprar Escudo\n(80 gold)"
+      bg_color="#ff9800"
+      color="white"
+      width="120"
+      height="60"
+      animation="hover-grow click-bounce"
+      on_click="set(gold, $gold - 80); 
+                     set(inventario, [...$inventario, 'escudo']);
+                     set(ultima_acao, 'Comprou escudo!');"
+    />
+
+    <agent
+      id="ganhar-gold"
+      x="600"
+      y="180"
+      text="💎 Ganhar Gold\n(+200)"
+      bg_color="#ffc107"
+      color="black"
+      width="120"
+      height="60"
+      animation="hover-grow click-bounce"
+      on_click="set(gold, $gold + 200); 
+                     set(ultima_acao, 'Ganhou 200 gold!');"
+    />
+
+    <!-- Navegação -->
+    <agent
+      id="voltar-jogo"
+      x="200"
+      y="280"
+      text="🎮 Voltar ao Jogo"
+      bg_color="#4caf50"
+      color="white"
+      width="140"
+      height="40"
+      animation="hover-grow"
+      on_click="goToPage('jogo')"
+    />
+
+    <agent
+      id="ir-stats-loja"
+      x="360"
+      y="280"
+      text="📈 Ver Estatísticas"
+      bg_color="#2196f3"
+      color="white"
+      width="140"
+      height="40"
+      animation="hover-grow"
+      on_click="goToPage('estatisticas')"
+    />
+
+    <agent
+      id="reset-da-loja"
+      x="520"
+      y="280"
+      text="🔄 RESET"
+      bg_color="#f44336"
+      color="white"
+      width="100"
+      height="40"
+      animation="hover-grow click-bounce"
+      on_click="set(ultima_acao, 'Reset da loja!'); reset()"
+    />
+  </page>
+
+  <!-- === PÁGINA DE ESTATÍSTICAS === -->
+  <page id="estatisticas" bg_color="#e1f5fe">
+    <agent
+      id="titulo-stats"
+      x="center"
+      y="30"
+      text="📈 Estatísticas do Jogador"
+      color="#0277bd"
+      font-size="24"
+    />
+
+    <!-- Estatísticas Detalhadas -->
+    <agent
+      id="stats-pontuacao"
+      x="center"
+      y="100"
+      text="🎯 Pontuação Total: $pontuacao pontos"
+      color="#2e7d32"
+      font-size="16"
+    />
+
+    <agent
+      id="stats-nivel"
+      x="center"
+      y="130"
+      text="⭐ Nível Atual: $nivel"
+      color="#2e7d32"
+      font-size="16"
+    />
+
+    <agent
+      id="stats-vidas"
+      x="center"
+      y="160"
+      text="❤️ Vidas Restantes: $vidas"
+      color="#2e7d32"
+      font-size="16"
+    />
+
+    <agent
+      id="stats-gold"
+      x="center"
+      y="190"
+      text="💰 Gold: $gold moedas"
+      color="#2e7d32"
+      font-size="16"
+    />
+
+    <agent
+      id="stats-xp"
+      x="center"
+      y="220"
+      text="🌟 Experiência: $experiencia XP"
+      color="#2e7d32"
+      font-size="16"
+    />
+
+    <agent
+      id="stats-tempo"
+      x="center"
+      y="250"
+      text="⏱️ Tempo Jogado: $tempo_jogado minutos"
+      color="#2e7d32"
+      font-size="16"
+    />
+
+    <agent
+      id="stats-fase"
+      x="center"
+      y="280"
+      text="🏆 Fase Atual: $fase_atual"
+      color="#2e7d32"
+      font-size="16"
+    />
+
+    <agent
+      id="stats-inventario"
+      x="center"
+      y="310"
+      text="🎒 Inventário: $inventario"
+      color="#2e7d32"
+      font-size="16"
+    />
+
+    <agent
+      id="stats-ultima"
+      x="center"
+      y="350"
+      text="🔄 Última Ação: $ultima_acao"
+      color="#666666"
+      font-size="14"
+    />
+
+    <!-- Ações de Teste -->
+    <agent
+      id="achievement"
+      x="200"
+      y="420"
+      text="🏅 Ganhar Achievement"
+      bg_color="#4caf50"
+      color="white"
+      width="160"
+      height="40"
+      animation="hover-grow click-bounce"
+      on_click="set(achievements, [...$achievements, 'Explorador']);
+                     set(ultima_acao, 'Achievement desbloqueado!');"
+    />
+
+    <agent
+      id="tempo-extra"
+      x="400"
+      y="420"
+      text="⏰ +10 min de jogo"
+      bg_color="#ff9800"
+      color="white"
+      width="140"
+      height="40"
+      animation="hover-grow click-bounce"
+      on_click="set(tempo_jogado, $tempo_jogado + 10);
+                     set(ultima_acao, 'Tempo de jogo aumentado!');"
+    />
+
+    <!-- Navegação -->
+    <agent
+      id="voltar-inicio-stats"
+      x="150"
+      y="500"
+      text="🏠 Início"
+      bg_color="#607d8b"
+      color="white"
+      width="100"
+      height="40"
+      animation="hover-grow"
+      on_click="goToPage('inicio')"
+    />
+
+    <agent
+      id="voltar-jogo-stats"
+      x="270"
+      y="500"
+      text="🎮 Jogo"
+      bg_color="#4caf50"
+      color="white"
+      width="100"
+      height="40"
+      animation="hover-grow"
+      on_click="goToPage('jogo')"
+    />
+
+    <agent
+      id="voltar-loja-stats"
+      x="390"
+      y="500"
+      text="🛒 Loja"
+      bg_color="#ff9800"
+      color="white"
+      width="100"
+      height="40"
+      animation="hover-grow"
+      on_click="goToPage('loja')"
+    />
+
+    <agent
+      id="reset-stats"
+      x="510"
+      y="500"
+      text="🔄 RESET TOTAL"
+      bg_color="#f44336"
+      color="white"
+      width="120"
+      height="40"
+      animation="hover-grow click-bounce"
+      on_click="set(ultima_acao, 'Reset das estatísticas!'); reset()"
+    />
+
+    <!-- Info -->
+    <agent
+      id="info-reset-stats"
+      x="center"
+      y="560"
+      text="💡 O reset() irá voltar para 'inicio' e zerar TODAS as propriedades"
+      color="#666666"
+      font-size="12"
+    />
+  </page>
 </fable>
