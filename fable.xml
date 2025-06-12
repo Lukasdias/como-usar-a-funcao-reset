@@ -27,7 +27,7 @@
     <agent
       id="subtitulo"
       x="center"
-      y="100"
+      y="170"
       text="Navegue, modifique valores e teste o reset completo!"
       color="#424242"
       font-size="16"
@@ -37,7 +37,7 @@
     <agent
       id="status-inicial"
       x="center"
-      y="150"
+      y="250"
       text="📊 Estado Inicial - Tudo em valores padrão"
       color="#1976d2"
       font-size="18"
@@ -46,7 +46,7 @@
     <agent
       id="display-inicial"
       x="center"
-      y="190"
+      y="140"
       text="Pontos: $pontuacao | Nível: $nivel | Vidas: $vidas | Gold: $gold"
       color="#2e7d32"
       font-size="14"
