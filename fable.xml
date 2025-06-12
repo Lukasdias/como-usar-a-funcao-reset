@@ -71,7 +71,7 @@
       color="white"
       width="140"
       height="50"
-      animation="hover-grow click-bounce"
+      animation="click-pulse"
       on_click="goToPage('jogo')"
     />
 
@@ -84,7 +84,7 @@
       color="white"
       width="140"
       height="50"
-      animation="hover-grow click-bounce"
+      animation="click-pulse"
       on_click="goToPage('loja')"
     />
 
@@ -97,7 +97,7 @@
       color="white"
       width="140"
       height="50"
-      animation="hover-grow click-bounce"
+      animation="click-pulse"
       on_click="goToPage('estatisticas')"
     />
 
@@ -111,7 +111,7 @@
       color="white"
       width="200"
       height="60"
-      animation="hover-grow click-bounce"
+      animation="click-pulse"
       font-size="18"
       on_click="set(ultima_acao, 'Reset executado!'); reset()"
     />
@@ -175,7 +175,7 @@
       color="white"
       width="140"
       height="40"
-      animation="hover-grow click-bounce"
+      animation="click-pulse"
       on_click="set(pontuacao, $pontuacao + 100); 
                      set(experiencia, $experiencia + 25);
                      set(ultima_acao, 'Ganhou 100 pontos!');"
@@ -190,7 +190,7 @@
       color="white"
       width="120"
       height="40"
-      animation="hover-grow click-bounce"
+      animation="click-pulse"
       on_click="set(nivel, $nivel + 1); 
                      set(experiencia, $experiencia + 100);
                      set(ultima_acao, 'Subiu para nível $nivel!');"
@@ -205,7 +205,7 @@
       color="white"
       width="100"
       height="40"
-      animation="hover-grow click-bounce"
+      animation="click-pulse"
       on_click="set(vidas, $vidas - 1); 
                      set(ultima_acao, 'Perdeu 1 vida!');"
     />
@@ -219,7 +219,7 @@
       color="white"
       width="120"
       height="40"
-      animation="hover-grow click-bounce"
+      animation="click-pulse"
       on_click="set(fase_atual, 'fase-' + $nivel); 
                      set(tempo_jogado, $tempo_jogado + 5);
                      set(ultima_acao, 'Avançou para: $fase_atual');"
@@ -261,7 +261,7 @@
       color="white"
       width="100"
       height="40"
-      animation="hover-grow click-bounce"
+      animation="click-pulse"
       on_click="set(ultima_acao, 'Reset do jogo!'); reset()"
     />
   </page>
@@ -306,7 +306,7 @@
       color="white"
       width="120"
       height="60"
-      animation="hover-grow click-bounce"
+      animation="click-pulse"
       on_click="set(gold, $gold - 50); 
                      set(inventario, [...$inventario, 'espada']);
                      set(ultima_acao, 'Comprou espada!');"
@@ -321,7 +321,7 @@
       color="white"
       width="120"
       height="60"
-      animation="hover-grow click-bounce"
+      animation="click-pulse"
       on_click="set(gold, $gold - 30); 
                      set(inventario, [...$inventario, 'poção']);
                      set(ultima_acao, 'Comprou poção!');"
@@ -336,7 +336,7 @@
       color="white"
       width="120"
       height="60"
-      animation="hover-grow click-bounce"
+      animation="click-pulse"
       on_click="set(gold, $gold - 80); 
                      set(inventario, [...$inventario, 'escudo']);
                      set(ultima_acao, 'Comprou escudo!');"
@@ -351,7 +351,7 @@
       color="black"
       width="120"
       height="60"
-      animation="hover-grow click-bounce"
+      animation="click-pulse"
       on_click="set(gold, $gold + 200); 
                      set(ultima_acao, 'Ganhou 200 gold!');"
     />
@@ -392,7 +392,7 @@
       color="white"
       width="100"
       height="40"
-      animation="hover-grow click-bounce"
+      animation="click-pulse"
       on_click="set(ultima_acao, 'Reset da loja!'); reset()"
     />
   </page>
@@ -500,7 +500,7 @@
       color="white"
       width="160"
       height="40"
-      animation="hover-grow click-bounce"
+      animation="click-pulse"
       on_click="set(achievements, [...$achievements, 'Explorador']);
                      set(ultima_acao, 'Achievement desbloqueado!');"
     />
@@ -514,7 +514,7 @@
       color="white"
       width="140"
       height="40"
-      animation="hover-grow click-bounce"
+      animation="click-pulse"
       on_click="set(tempo_jogado, $tempo_jogado + 10);
                      set(ultima_acao, 'Tempo de jogo aumentado!');"
     />
@@ -568,7 +568,7 @@
       color="white"
       width="120"
       height="40"
-      animation="hover-grow click-bounce"
+      animation="click-pulse"
       on_click="set(ultima_acao, 'Reset das estatísticas!'); reset()"
     />
 
