@@ -13,6 +13,8 @@
   <property name="experiencia" default="0" />
   <property name="ultima_acao" default="Jogo iniciado" />
 
+
+
   <!-- === PÁGINA INICIAL === -->
   <page id="inicio" bg_color="#e8f5e8">
     <agent
